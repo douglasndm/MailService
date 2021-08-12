@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import * as Yup from 'yup';
 
 import Mail from '@services/Mail';
+import AppError from '@errors/AppError';
 
 class MailController {
     async store(req: Request, res: Response): Promise<Response> {
@@ -14,7 +15,7 @@ class MailController {
         try {
             await schema.validate(req.body);
         } catch (err) {
-            return res.status(500).json({ error: err.message });
+            throw new AppError({ message: err.message });
         }
 
         const { to, subject, text } = req.body;
