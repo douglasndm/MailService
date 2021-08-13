@@ -12,7 +12,9 @@ class MailController {
         const schema = Yup.object().shape({
             to: Yup.string().required().email('Invalid email'),
             subject: Yup.string().required(),
-            text: Yup.string().required(),
+            name: Yup.string().required(),
+            AppName: Yup.string().required(),
+            batches: Yup.array(Yup.object()),
         });
 
         try {
@@ -21,10 +23,12 @@ class MailController {
             throw new AppError({ message: err.message });
         }
 
-        const { to, subject, text } = req.body;
+        const { to, subject, name, AppName, batches: batch } = req.body;
 
         const variables: IMailVariables = {
-            name: 'Douglas',
+            name,
+            AppName,
+            batch,
         };
 
         const templatesFolder = path.resolve(
@@ -37,7 +41,7 @@ class MailController {
         );
         const templatePath = path.resolve(
             templatesFolder,
-            'SimpleNotification.hbs',
+            'ExpiredAndNextProducts.hbs',
         );
 
         const templateFileContent = await fs.promises.readFile(templatePath, {
