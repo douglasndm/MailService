@@ -21,6 +21,7 @@ class MailController {
         const { to, subject, text } = req.body;
 
         await Mail.sendMail({
+            from: process.env.MAIL_USER,
             to,
             subject,
             text,
