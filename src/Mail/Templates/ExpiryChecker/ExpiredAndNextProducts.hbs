@@ -66,6 +66,11 @@
         }
     }
 
+    .expired{
+        background-color: red;
+        color: white;
+    }
+
 
 
 
@@ -87,7 +92,7 @@
         </thead>
         <tbody>
         {{#each batch}}
-            <tr>
+            <tr {{#if this.expired }} class="expired"{{/if}}>
                 <td>{{this.code}}</td>
                 <td>{{this.productName}}</td>
                 <td class="lessRelevant">{{this.batch}}</td>
