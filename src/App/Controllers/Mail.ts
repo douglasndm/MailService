@@ -9,6 +9,7 @@ import AppError from '@errors/AppError';
 
 class MailController {
     async store(req: Request, res: Response): Promise<Response> {
+        console.log('Received Mail request');
         const schema = Yup.object().shape({
             to: Yup.string().required().email('Invalid email'),
             subject: Yup.string().required(),
@@ -51,10 +52,10 @@ class MailController {
         const compiledTemplate = Handlebars.compile(templateFileContent);
         const parsedTemplate = compiledTemplate(variables);
 
-        await Mail.sendMail({
+        Mail.sendMail({
             from: {
                 address: process.env.MAIL_USER || 'noreplay@douglasndm.dev',
-                name: 'Douglas de Mattos',
+                name: AppName,
             },
             to,
             subject,
