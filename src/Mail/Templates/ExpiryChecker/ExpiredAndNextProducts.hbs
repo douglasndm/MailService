@@ -1,58 +1,105 @@
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
     * {
         padding: 0;
         margin: 0;
         box-sizing: border-box;
     }
+
+    #title {
+        font-family: 'Roboto', sans-serif;
+    }
+    #description {
+        font-family: 'Roboto', sans-serif;
+    }
     #content {
         display: flex;
         flex-direction: column;
 
+        margin: 5%;
+
         align-items: center;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
-    #title {
+    .styled-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 
     }
 
-    #description {
-
+    .styled-table thead tr {
+        background-color: #14d48f;
+        color: #ffffff;
+        text-align: left;
+    }
+    .styled-table th,
+    .styled-table td {
+        padding: 12px 15px;
     }
 
-    table {
-        margin-top: 2%;
-        width: 75%;
+    .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
     }
 
-    #tableTitle {
-        background-color: #4f4f4f;
-        font-size: 16px;
+    .styled-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+    }
+
+    .styled-table tbody tr:last-of-type {
+        border-bottom: 2px solid #14d48f;
+    }
+
+    .styled-table tbody tr.active-row {
         font-weight: bold;
-        color: #fff
+        color: #009879;
     }
+
+
+
+    @media (max-width: 700px) {
+        .lessRelevant {
+            display:none
+        }
+    }
+
+
+
+
 </style>
 
 <div id="content">
     <h2 id="title">Olá {{name}}</h2>
     <h4 id="description">Este é seu resumo semanal do {{AppName}}</h4>
 
-    <table>
-        <tr id="tableTitle">
-            <th>Código</th>
-            <th>Nome</th>
-            <th>Lote</th>
-            <th>Data de validade</th>
-            <th>Quantidade</th>
-        </tr>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th class="lessRelevant">Lote</th>
+                <th>Vence em</th>
+                <th class="lessRelevant">Quantidade</th>
+            </tr>
+        </thead>
+        <tbody>
         {{#each batch}}
-        <tr>
-            <td>{{this.code}}</td>
-            <td>{{this.productName}}</td>
-            <td>{{this.batch}}</td>
-            <td>{{this.exp_date}}</td>
-            <td>{{this.amount}}</td>
-        </tr>
+            <tr>
+                <td>{{this.code}}</td>
+                <td>{{this.productName}}</td>
+                <td class="lessRelevant">{{this.batch}}</td>
+                <td>{{this.exp_date}}</td>
+                <td class="lessRelevant">{{this.amount}}</td>
+            </tr>
         {{/each}}
+        </tbody>
     </table>
+
+    <footer>
+        <span>Obrigado.</span>
+    </footer>
 </div>
 
