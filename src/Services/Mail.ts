@@ -7,6 +7,12 @@ const transporter = nodemailder.createTransport({
         user: process.env.MAIL_USER,
         pass: process.env.MAIL_PASS,
     },
+    secure: false,
+    logger: true,
+    tls: {
+        // do not fail on invalid certs
+        rejectUnauthorized: false,
+    },
 });
 
 export default transporter;
