@@ -45,7 +45,7 @@
         border-bottom: 1px solid #dddddd;
     }
 
-    .styled-table tbody tr:nth-of-type(even) {
+    .styled-table tbody .batches:nth-of-type(even) {
         background-color: #f3f3f3;
     }
 
@@ -92,7 +92,7 @@
         </thead>
         <tbody>
         {{#each batch}}
-            <tr {{#if this.expired }} class="expired"{{/if}}>
+            <tr {{#if this.expired }} class="expired"{{else}}class="batches"{{/if}}>
                 <td>{{this.code}}</td>
                 <td>{{this.productName}}</td>
                 <td class="lessRelevant">{{this.batch}}</td>
