@@ -57,15 +57,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY }}
           source: ".,!node_modules"
-          target: "~/apps/MailService"
-
-      - name: Write .env file
-        uses: DamianReeves/write-file-action@v1.0
-        with:
-          path:  "~/apps/MailService/dist/.env"
-          contents: ${{ secrets.DOT_ENV }}
-          write-mode: overwrite
-          
+          target: "~/apps/MailService"          
           
       - name: Run production scripts
         uses: appleboy/ssh-action@master
