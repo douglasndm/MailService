@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
 import path from 'path';
 import fs from 'fs';
-import Handlebars from 'handlebars';
+import mjml from 'mjml';
+import { compile } from 'handlebars';
 import * as Yup from 'yup';
 
 import Mail from '@services/Mail';
@@ -38,19 +39,19 @@ class MailController {
             '..',
             'Mail',
             'Templates',
-            'ExpiryChecker',
+            'ExpiryTeams',
         );
-        const templatePath = path.resolve(
-            templatesFolder,
-            'ExpiredAndNextProducts.hbs',
-        );
+        const templatePath = path.resolve(templatesFolder, 'WeekResume.mjml');
 
         const templateFileContent = await fs.promises.readFile(templatePath, {
             encoding: 'utf-8',
         });
 
-        const compiledTemplate = Handlebars.compile(templateFileContent);
-        const parsedTemplate = compiledTemplate(variables);
+        const baseHtml = mjml(templateFileContent).html;
+        const compiledTemplate = compile(baseHtml);
+        const final = compiledTemplate(variables);
+
+        return res.send(final);
 
         Mail.sendMail({
             from: {
@@ -59,7 +60,7 @@ class MailController {
             },
             to,
             subject,
-            html: parsedTemplate,
+            html: final,
         });
 
         return res.status(201).send();

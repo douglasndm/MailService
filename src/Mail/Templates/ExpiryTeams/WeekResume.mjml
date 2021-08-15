@@ -1,0 +1,101 @@
+<mjml>
+    <mj-head>
+        <mj-title>Resumo semanal</mj-title>
+
+        <mj-breakpoint width="320px" />
+        <mj-font name="Roboto" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" />
+        <mj-style>
+
+        .header {
+            font-family: 'Roboto', sans-serif;
+            background-color: #303030;
+        }
+
+        .content{
+            background-color: #f0f0f0;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+        .styled-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+        }
+
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+        }
+
+
+        .styled-table .tbody .batches:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table .tbody tr:last-of-type {
+            border-bottom: 2px solid #14d48f;
+        }
+        </mj-style>
+    </mj-head>
+  <mj-body>
+
+  <mj-section css-class="header">
+        <mj-column>
+            <mj-text color="#ffffff" font-size="20px" font-family="'Roboto', sans-serif">Olá {{name}}</mj-text>
+        </mj-column>
+    </mj-section>
+
+  <mj-wrapper css-class="content">
+    <!-- Company Header -->
+    <mj-section padding="0">
+        <mj-column>
+            <mj-text font-size="16px" font-family="'Roboto', sans-serif">Este é seu resumo semanal do {{AppName}}</mj-text>
+        </mj-column>
+    </mj-section>
+
+    <mj-section padding="10px 0">
+      <mj-column>
+        <mj-table css-class="styled-table">
+
+          <mj-wrapper css-class="thead">
+            <tr
+                style="
+                    text-align:left;
+                    background-color: #14d48f;
+                    color: #ffffff;
+                    font-family: sans-serif;">
+
+                <th>Código</th>
+                <th>Nome</th>
+                <th>Lote</th>
+                <th>Vence em</th>
+                <th>Quantidade</th>
+            </tr>
+          </mj-wrapper>
+          <mj-wrapper>
+            {{#each batch}}
+                <tr {{#if this.expired }} style="background-color:#e30505;color: #FFF;" {{else}}style="background-color:#FFF;color: #000;border-bottom:1px solid #000"{{/if}}>
+                    <td>{{this.code}}</td>
+                    <td>{{this.productName}}</td>
+                    <td>{{this.batch}}</td>
+                    <td>{{this.exp_date}}</td>
+                    <td>{{this.amount}}</td>
+                </tr>
+            {{/each}}
+          </mj-wrapper>
+        </mj-table>
+      </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column>
+        <mj-text font-size="15px">Obrigado.</mj-text>
+      </mj-column>
+    </mj-section>
+
+    </mj-wrapper>
+
+  </mj-body>
+</mjml>

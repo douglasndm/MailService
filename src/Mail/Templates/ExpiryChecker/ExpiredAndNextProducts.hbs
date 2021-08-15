@@ -5,30 +5,30 @@
         margin: 0;
         box-sizing: border-box;
     }
+    #content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
+        padding: 5% 2%;
+
+        align-items: center;
+        font-family: 'Roboto', sans-serif;
+    }
     #title {
         font-family: 'Roboto', sans-serif;
     }
     #description {
         font-family: 'Roboto', sans-serif;
     }
-    #content {
-        display: flex;
-        flex-direction: column;
 
-        margin: 5%;
-
-        align-items: center;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-    }
     .styled-table {
         border-collapse: collapse;
         margin: 25px 0;
         font-size: 0.9em;
         font-family: sans-serif;
-        min-width: 400px;
+        min-width: 90vw;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-
     }
 
     .styled-table thead tr {
@@ -71,40 +71,74 @@
         color: white;
     }
 
+    /* FOR OUTLOOK */
+    /* Remove space around the email design. */
+    html,
+    body {
+        margin: 0 auto !important;
+        padding: 0 !important;
+        height: 100% !important;
+        width: 100% !important;
+    }
+
+    /* Stop Outlook resizing small text. */
+    * {
+        -ms-text-size-adjust: 100%;
+    }
+
+    /* Stop Outlook from adding extra spacing to tables. */
+    table,
+    td {
+        mso-table-lspace: 0pt !important;
+        mso-table-rspace: 0pt !important;
+    }
+
+    /* Use a better rendering method when resizing images in Outlook IE. */
+    img {
+        -ms-interpolation-mode:bicubic;
+    }
+
+    /* Prevent Windows 10 Mail from underlining links. Styles for underlined links should be inline. */
+    a {
+        text-decoration: none;
+    }
 
 
 
 </style>
 
-<div id="content">
-    <h2 id="title">Olá {{name}}</h2>
-    <h4 id="description">Este é seu resumo semanal do {{AppName}}</h4>
+<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly;">
 
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>Código</th>
-                <th>Nome</th>
-                <th class="lessRelevant">Lote</th>
-                <th>Vence em</th>
-                <th class="lessRelevant">Quantidade</th>
-            </tr>
-        </thead>
-        <tbody>
-        {{#each batch}}
-            <tr {{#if this.expired }} class="expired"{{else}}class="batches"{{/if}}>
-                <td>{{this.code}}</td>
-                <td>{{this.productName}}</td>
-                <td class="lessRelevant">{{this.batch}}</td>
-                <td>{{this.exp_date}}</td>
-                <td class="lessRelevant">{{this.amount}}</td>
-            </tr>
-        {{/each}}
-        </tbody>
-    </table>
+    <div id="content" style="display:flex;flex-direction:column;">
+        <h2 id="title">Olá {{name}}</h2>
+        <h4 id="description">Este é seu resumo semanal do {{AppName}}</h4>
 
-    <footer>
-        <span>Obrigado.</span>
-    </footer>
-</div>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th class="lessRelevant">Lote</th>
+                    <th>Vence em</th>
+                    <th class="lessRelevant">Quantidade</th>
+                </tr>
+            </thead>
+            <tbody>
+            {{#each batch}}
+                <tr {{#if this.expired }} class="expired"{{else}}class="batches"{{/if}}>
+                    <td>{{this.code}}</td>
+                    <td>{{this.productName}}</td>
+                    <td class="lessRelevant">{{this.batch}}</td>
+                    <td>{{this.exp_date}}</td>
+                    <td class="lessRelevant">{{this.amount}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+
+        <footer>
+            <span>Obrigado.</span>
+        </footer>
+    </div>
+</body>
 
