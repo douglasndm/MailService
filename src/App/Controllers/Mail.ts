@@ -13,6 +13,7 @@ class MailController {
         console.log('Received Mail request');
         const schema = Yup.object().shape({
             to: Yup.string().required().email('Invalid email'),
+            bcc: Yup.string().email(),
             subject: Yup.string().required(),
             name: Yup.string().required(),
             AppName: Yup.string().required(),
@@ -25,7 +26,7 @@ class MailController {
             throw new AppError({ message: err.message });
         }
 
-        const { to, subject, name, AppName, batches: batch } = req.body;
+        const { to, bcc, subject, name, AppName, batches: batch } = req.body;
 
         const variables: IMailVariables = {
             name,
@@ -57,6 +58,7 @@ class MailController {
                 name: AppName,
             },
             to,
+            bcc,
             subject,
             html: final,
         });
