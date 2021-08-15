@@ -51,8 +51,6 @@ class MailController {
         const compiledTemplate = compile(baseHtml);
         const final = compiledTemplate(variables);
 
-        return res.send(final);
-
         Mail.sendMail({
             from: {
                 address: process.env.MAIL_USER || 'noreplay@douglasndm.dev',
