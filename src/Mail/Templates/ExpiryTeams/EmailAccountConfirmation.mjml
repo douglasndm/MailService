@@ -1,0 +1,60 @@
+<mjml>
+    <mj-head>
+        <mj-title>Confirmação de criação de conta</mj-title>
+
+        <mj-breakpoint width="320px" />
+        <mj-font name="Roboto" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" />
+        <mj-style>
+
+        .header {
+            font-family: 'Roboto', sans-serif;
+            background-color: #14d48f;
+        }
+
+        .content{
+            background-color: #f0f0f0;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+
+        </mj-style>
+    </mj-head>
+  <mj-body>
+
+  <mj-section css-class="header">
+        <mj-column>
+            <mj-text color="#ffffff" font-size="20px" font-family="'Roboto', sans-serif">Olá {{name}}</mj-text>
+        </mj-column>
+    </mj-section>
+
+  <mj-wrapper css-class="content">
+    <!-- Company Header -->
+    <mj-section padding="0">
+        <mj-column>
+            <mj-text font-size="16px" font-family="'Roboto', sans-serif">Este é o e-mail para confirmação da sua conta no {{AppName}}.</mj-text>
+        </mj-column>
+    </mj-section>
+
+    <mj-section padding="0">
+        <mj-column>
+            <mj-text font-size="16px" font-family="'Roboto', sans-serif">Seu gerente, {{manager}}, criou sua conta e adicionou você ao time {{team}}. Para confirmar a criação da sua conta basta <a href="{{confirmationLink}}">clicar aqui</a>.</mj-text>
+        </mj-column>
+    </mj-section>
+
+    <mj-section padding="0">
+        <mj-column>
+            <mj-text font-size="16px" font-family="'Roboto', sans-serif">Caso não reconheça a pessoa ou o time, basta ignorar este e-mail.</mj-text>
+        </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column>
+        <mj-text font-size="15px">Obrigado.</mj-text>
+      </mj-column>
+    </mj-section>
+
+    </mj-wrapper>
+
+  </mj-body>
+</mjml>

@@ -8,7 +8,7 @@
 
         .header {
             font-family: 'Roboto', sans-serif;
-            background-color: #303030;
+            background-color: #5856d6;
         }
 
         .content{
@@ -35,7 +35,7 @@
         }
 
         .styled-table .tbody tr:last-of-type {
-            border-bottom: 2px solid #14d48f;
+            border-bottom: 2px solid #5856d6;
         }
         </mj-style>
     </mj-head>
