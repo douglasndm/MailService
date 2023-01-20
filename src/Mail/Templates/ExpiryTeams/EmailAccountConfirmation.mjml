@@ -38,13 +38,13 @@
 
     <mj-section padding="0">
         <mj-column>
-            <mj-text font-size="16px" font-family="'Roboto', sans-serif">Seu gerente, {{manager}}, criou sua conta e adicionou você ao time {{team}}. Para confirmar a criação da sua conta basta <a href="{{confirmationLink}}">clicar aqui</a>.</mj-text>
+            <mj-text font-size="16px" font-family="'Roboto', sans-serif">Para confirmar a criação da sua conta basta <a href="{{confirmationLink}}">clicar aqui</a>.</mj-text>
         </mj-column>
     </mj-section>
 
     <mj-section padding="0">
         <mj-column>
-            <mj-text font-size="16px" font-family="'Roboto', sans-serif">Caso não reconheça a pessoa ou o time, basta ignorar este e-mail.</mj-text>
+            <mj-text font-size="16px" font-family="'Roboto', sans-serif">Caso não tenha criado uma conta, ou não saiba do que se trata, basta ignorar este e-mail.</mj-text>
         </mj-column>
     </mj-section>
 

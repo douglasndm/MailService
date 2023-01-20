@@ -16,8 +16,6 @@ class AccountConfirmationController {
             subject: Yup.string().required(),
             name: Yup.string().required(),
             AppName: Yup.string().required(),
-            manager: Yup.string().required(),
-            team: Yup.string().required(),
             confirmationLink: Yup.string().url().required(),
         });
 
