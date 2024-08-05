@@ -2,7 +2,7 @@
 
 name: CI
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
@@ -27,8 +27,8 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.5
         with:
-          node-version: 14.x
-          
+          node-version: 20.x
+
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -40,16 +40,16 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-          
+
       # INSTALAR DEPENDENCIAS NPM/Yarn
       - name: Instal dependencies
         run: yarn
-        
+
       # Realização da build
       - name: Run build
-        run: yarn build        
-        
-      - name: Copy code to Digital Ocean
+        run: yarn build
+
+      - name: Copy code to Server
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -57,8 +57,8 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY }}
           source: ".,!node_modules"
-          target: "~/apps/MailService"          
-          
+          target: "~/apps/MailService"
+
       - name: Run production scripts
         uses: appleboy/ssh-action@master
         with:
@@ -66,8 +66,8 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY }}
-          script: | 
+          script: |
             cd ~/apps/MailService
-            yarn            
-            pm2 restart 1
-            
+            npm install
+            pm2 restart MailService
+
