@@ -5,7 +5,7 @@ import Routes from './routes';
 
 const App = express();
 
-dotenv.config();
+dotenv.config({ path: '../.env' });
 
 App.use(express.json());
 App.use(Routes);
