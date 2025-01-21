@@ -53,7 +53,9 @@ class MailController {
 
         Mail.sendMail({
             from: {
-                address: process.env.MAIL_USER || 'noreplay@douglasndm.dev',
+                address:
+                    process.env.SMTP_MAIL_USER ||
+                    'noreplay@controledevalidades.com',
                 name: AppName,
             },
             to,

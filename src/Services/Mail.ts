@@ -7,11 +7,10 @@ const transporter = nodemailder.createTransport({
         user: process.env.SMTP_MAIL_USER,
         pass: process.env.SMTP_MAIL_PASS,
     },
-    secure: false,
+    secure: true,
     logger: true,
     tls: {
-        // do not fail on invalid certs
-        rejectUnauthorized: false,
+        ciphers: 'SSLv3',
     },
 });
 
