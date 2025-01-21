@@ -5,6 +5,8 @@ import AppError from '@errors/AppError';
 
 import App from './app';
 
+const { PORT } = process.env;
+
 App.use((err: Error, request: Request, response: Response, _: NextFunction) => {
     if (err instanceof AppError) {
         return response.status(err.statusCode).json({
@@ -22,6 +24,6 @@ App.use((err: Error, request: Request, response: Response, _: NextFunction) => {
     });
 });
 
-App.listen(Number(process.env.PORT), process.env.HOST || 'localhost', () => {
-    console.log(`Server is running at ${process.env.HOST}:${process.env.PORT}`);
+App.listen(Number(PORT), '0.0.0.0', () => {
+    console.log(`Mail Server is running at http://localhost:${PORT} 🌐`);
 });
