@@ -8,6 +8,7 @@
     "dev": "ts-node-dev -r dotenv/config -r tsconfig-paths/register --respawn --transpile-only src/server.ts"
   },
   "dependencies": {
+    "@sentry/node": "^8.54.0",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-async-errors": "^3.1.1",

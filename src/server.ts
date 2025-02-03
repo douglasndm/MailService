@@ -4,6 +4,7 @@ import 'express-async-errors';
 import AppError from '@errors/AppError';
 
 import App from './app';
+import './Services/Sentry';
 
 const { PORT } = process.env;
 
